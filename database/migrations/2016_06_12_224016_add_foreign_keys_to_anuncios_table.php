@@ -12,10 +12,10 @@ class AddForeignKeysToAnunciosTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('Anuncios', function(Blueprint $table)
+		Schema::table('anuncios', function(Blueprint $table)
 		{
-			$table->foreign('idLivro', 'fk_livro')->references('id')->on('Livros')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('idUsuario', 'fk_anunciante')->references('id')->on('Usuarios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('idLivro', 'fk_livro')->references('id')->on('livros')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('idUsuario', 'fk_anunciante')->references('id')->on('usuarios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -27,7 +27,7 @@ class AddForeignKeysToAnunciosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('Anuncios', function(Blueprint $table)
+		Schema::table('anuncios', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_livro');
 			$table->dropForeign('fk_anunciante');

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateUsuarioRevisaosTable extends Migration {
+class CreateUsuariosRevisoesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateUsuarioRevisaosTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Usuario_Revisaos', function(Blueprint $table)
+		Schema::create('usuarios_revisoes', function(Blueprint $table)
 		{
 			$table->integer('id')->primary();
 			$table->integer('nota')->unsigned()->default(0);
@@ -29,7 +29,7 @@ class CreateUsuarioRevisaosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('Usuario_Revisaos');
+		Schema::drop('usuarios_revisoes');
 	}
 
 }

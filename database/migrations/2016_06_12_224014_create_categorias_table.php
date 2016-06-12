@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateDenunciasTable extends Migration {
+class CreateCategoriasTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,10 @@ class CreateDenunciasTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Denuncias', function(Blueprint $table)
+		Schema::create('categorias', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->text('reclamacao', 65535);
-			$table->integer('idDenunciante');
-			$table->integer('idDenunciado');
+			$table->string('nome', 45)->unique('nome_UNIQUE');
 		});
 	}
 
@@ -29,7 +27,7 @@ class CreateDenunciasTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('Denuncias');
+		Schema::drop('categorias');
 	}
 
 }

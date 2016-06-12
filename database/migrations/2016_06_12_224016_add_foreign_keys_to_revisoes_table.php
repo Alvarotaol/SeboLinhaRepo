@@ -12,10 +12,10 @@ class AddForeignKeysToRevisoesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('Revisoes', function(Blueprint $table)
+		Schema::table('revisoes', function(Blueprint $table)
 		{
-			$table->foreign('idUsuario', 'fk_criador')->references('id')->on('Usuarios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('idLivro', 'fk_livro_id2')->references('id')->on('Livros')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('idUsuario', 'fk_criador')->references('id')->on('usuarios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('idLivro', 'fk_livro_id2')->references('id')->on('livros')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -27,7 +27,7 @@ class AddForeignKeysToRevisoesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('Revisoes', function(Blueprint $table)
+		Schema::table('revisoes', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_criador');
 			$table->dropForeign('fk_livro_id2');

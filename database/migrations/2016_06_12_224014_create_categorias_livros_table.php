@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCategoriasTable extends Migration {
+class CreateCategoriasLivrosTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,11 @@ class CreateCategoriasTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Categorias', function(Blueprint $table)
+		Schema::create('categorias_livros', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->string('nome', 45)->unique('nome_UNIQUE');
+			$table->integer('idCategoria');
+			$table->integer('idLivro');
 		});
 	}
 
@@ -27,7 +28,7 @@ class CreateCategoriasTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('Categorias');
+		Schema::drop('categorias_livros');
 	}
 
 }

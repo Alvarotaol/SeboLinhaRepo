@@ -12,7 +12,7 @@ class CreateAnunciosTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Anuncios', function(Blueprint $table)
+		Schema::create('anuncios', function(Blueprint $table)
 		{
 			$table->integer('id', true);
 			$table->integer('tipo')->default(0);
@@ -32,7 +32,7 @@ class CreateAnunciosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('Anuncios');
+		Schema::drop('anuncios');
 	}
 
 }

@@ -12,10 +12,10 @@ class AddForeignKeysToDenunciasTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('Denuncias', function(Blueprint $table)
+		Schema::table('denuncias', function(Blueprint $table)
 		{
-			$table->foreign('id', 'fk_denunciante')->references('id')->on('Usuarios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('id', 'fk_denunciado')->references('id')->on('Usuarios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('id', 'fk_denunciante')->references('id')->on('usuarios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('id', 'fk_denunciado')->references('id')->on('usuarios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -27,7 +27,7 @@ class AddForeignKeysToDenunciasTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('Denuncias', function(Blueprint $table)
+		Schema::table('denuncias', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_denunciante');
 			$table->dropForeign('fk_denunciado');
