@@ -14,7 +14,7 @@ class LivroController extends Controller
 	//
 	public function index()
 	{
-		$livros = DB::select('select * from Livros');
+		$livros = DB::select('select * from livros');
 		$pagename = 'Lista de livros';
 		return view('pages.livros', [
 			'livros'  	=> $livros,
@@ -24,7 +24,7 @@ class LivroController extends Controller
 
 	public function show($livro)
 	{
-		$getlivro = DB::select('select * from Livros where id = ?', [$livro]);
+		$getlivro = DB::select('select * from livros where id = ?', [$livro]);
 		return view('pages.livroindex', [
 			'livros'	=> $getlivro
 		]);
@@ -33,12 +33,12 @@ class LivroController extends Controller
 	public function store(Request $request)
 	{	
 	 	//return $request->all();
-	 	DB::insert('INSERT INTO Livros (titulo, isbn, idioma, autor) VALUES (?, ?, ?, ?)', [$request->titulo, $request->isbn, $request->idioma, $request->autor]);
+	 	DB::insert('INSERT INTO livros (titulo, isbn, idioma, autor) VALUES (?, ?, ?, ?)', [$request->titulo, $request->isbn, $request->idioma, $request->autor]);
 	 	return back();
 	}
 	public function delete($livro)
 	{
-		DB::delete('DELETE FROM Livros WHERE id = ?', [$livro]);
+		DB::delete('DELETE FROM livros WHERE id = ?', [$livro]);
 		return back();
 	}
 	
