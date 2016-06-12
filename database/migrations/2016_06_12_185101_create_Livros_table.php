@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateRevisaoTable extends Migration {
+class CreateLivrosTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,13 @@ class CreateRevisaoTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Revisao', function(Blueprint $table)
+		Schema::create('Livros', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->string('texto', 45);
-			$table->dateTime('data');
-			$table->integer('idUsuario')->index('fk_criador');
-			$table->integer('idLivro')->index('fk_livro_id2');
+			$table->string('titulo', 45);
+			$table->string('isbn', 45)->nullable()->unique('isbn_UNIQUE');
+			$table->string('idioma', 45);
+			$table->string('autor', 45)->nullable();
 		});
 	}
 
@@ -30,7 +30,7 @@ class CreateRevisaoTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('Revisao');
+		Schema::drop('Livros');
 	}
 
 }

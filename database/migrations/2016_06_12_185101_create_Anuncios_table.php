@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAnuncioTable extends Migration {
+class CreateAnunciosTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateAnuncioTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Anuncio', function(Blueprint $table)
+		Schema::create('Anuncios', function(Blueprint $table)
 		{
 			$table->integer('id', true);
 			$table->integer('tipo')->default(0);
@@ -32,7 +32,7 @@ class CreateAnuncioTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('Anuncio');
+		Schema::drop('Anuncios');
 	}
 
 }

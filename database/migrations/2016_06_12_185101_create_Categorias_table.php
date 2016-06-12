@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateLivroTable extends Migration {
+class CreateCategoriasTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,10 @@ class CreateLivroTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Livro', function(Blueprint $table)
+		Schema::create('Categorias', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->string('titulo', 45);
-			$table->string('isbn', 45)->nullable()->unique('isbn_UNIQUE');
-			$table->string('idioma', 45);
-			$table->string('autor', 45)->nullable();
+			$table->string('nome', 45)->unique('nome_UNIQUE');
 		});
 	}
 
@@ -30,7 +27,7 @@ class CreateLivroTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('Livro');
+		Schema::drop('Categorias');
 	}
 
 }
