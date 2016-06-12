@@ -7,6 +7,8 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use App\Usuario;
+use DB;
 
 class AuthController extends Controller
 {
@@ -63,10 +65,12 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        DB::insert('insert into sebolinha.usuarios (nome, email, cpf) values (?, ?, ?);', [$data['name'], $data['email'], $data['cpf']]);
+
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+			'name' => $data['name'],
+			'email' => $data['email'],
+			'password' => bcrypt($data['password']),
         ]);
     }
 }

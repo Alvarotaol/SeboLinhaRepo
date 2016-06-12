@@ -12,7 +12,7 @@ class CreateUsuariosTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Usuarios', function(Blueprint $table)
+		Schema::create('usuarios', function(Blueprint $table)
 		{
 			$table->integer('id', true);
 			$table->string('nome', 45);
@@ -21,7 +21,7 @@ class CreateUsuariosTable extends Migration {
 			$table->string('endereco', 45)->nullable();
 			$table->string('cidade', 45)->nullable();
 			$table->string('estado', 45)->nullable();
-			$table->binary('moderador', 1)->default(0);
+			$table->binary('moderador', 1);
 		});
 	}
 
@@ -33,7 +33,7 @@ class CreateUsuariosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('Usuarios');
+		Schema::drop('usuarios');
 	}
 
 }

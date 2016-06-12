@@ -12,10 +12,10 @@ class AddForeignKeysToAtendesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('Atendes', function(Blueprint $table)
+		Schema::table('atendes', function(Blueprint $table)
 		{
-			$table->foreign('id', 'fk_anuncio')->references('id')->on('Anuncios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('id', 'fk_usuario_id')->references('id')->on('Usuarios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('id', 'fk_anuncio')->references('id')->on('anuncios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('id', 'fk_usuario_id')->references('id')->on('usuarios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -27,7 +27,7 @@ class AddForeignKeysToAtendesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('Atendes', function(Blueprint $table)
+		Schema::table('atendes', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_anuncio');
 			$table->dropForeign('fk_usuario_id');

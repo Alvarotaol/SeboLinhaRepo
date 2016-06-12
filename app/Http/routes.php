@@ -16,7 +16,17 @@ Route::get('/', function(){
 	return view('main');
 });
 
+//Rotas dos livros
 Route::get('livros', 'LivroController@index');
 Route::get('livro/{livro}', 'LivroController@show');
 Route::post('livros/new', 'LivroController@create');
 Route::delete('livros/{livro}/delete', 'LivroController@delete');
+
+//Rotas dos usuários
+Route::get('usuarios', 'UsuarioController@index');
+Route::get('usuario/{livro}', 'UsuarioController@show');
+
+//Rota do Sol
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
