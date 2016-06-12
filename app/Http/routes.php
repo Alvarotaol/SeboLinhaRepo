@@ -19,4 +19,4 @@ Route::get('/', function(){
 Route::get('livros', 'LivroController@index');
 Route::get('livro/{livro}', 'LivroController@show');
 Route::post('livros/new', 'LivroController@store');
-Route::delete('livros/{livro}/delete', 'LivroController@delete');
+Route::delete('livro/{livro}/delete', 'LivroController@delete');

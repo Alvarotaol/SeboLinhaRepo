@@ -36,9 +36,10 @@ class LivroController extends Controller
 	 	DB::insert('INSERT INTO Livros (titulo, isbn, idioma, autor) VALUES (?, ?, ?, ?)', [$request->titulo, $request->isbn, $request->idioma, $request->autor]);
 	 	return back();
 	}
-	public function delete()
+	public function delete($livro)
 	{
-	
+		DB::delete('DELETE FROM Livros WHERE id = ?', [$livro]);
+		return back();
 	}
 	
 }
