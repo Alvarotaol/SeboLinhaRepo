@@ -19,8 +19,8 @@ Route::get('/', function(){
 //Rotas dos livros
 Route::get('livros', 'LivroController@index');
 Route::get('livro/{livro}', 'LivroController@show');
-Route::post('livros/new', 'LivroController@create');
-Route::delete('livros/{livro}/delete', 'LivroController@delete');
+Route::post('livros/new', 'LivroController@store');
+Route::delete('livro/{livro}/delete', 'LivroController@delete');
 
 //Rotas dos usuários
 Route::get('usuarios', 'UsuarioController@index');
