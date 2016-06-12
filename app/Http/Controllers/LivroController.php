@@ -30,19 +30,11 @@ class LivroController extends Controller
 		]);
 	}
 
-	public function create()
+	public function store(Request $request)
 	{	
-	 	$livro = DB::insert('INSERT INTO Livros (titulo, isbn, idioma, autor)
-	 						VALUES (?, ?, ?, ?)',	[$request->nome,
-	 						                     	$request->isbn,
-	 						                     	$request->idioma,
-	 						                     	$request->autor]);
-
-		$pagename = 'Lista de livros';
-		return view('pages.livros', [
-			'livros'  	=> $livros,
-			'pagename'	=> $pagename
-		]);
+	 	//return $request->all();
+	 	DB::insert('INSERT INTO Livros (titulo, isbn, idioma, autor) VALUES (?, ?, ?, ?)', [$request->titulo, $request->isbn, $request->idioma, $request->autor]);
+	 	return back();
 	}
 	public function delete()
 	{
