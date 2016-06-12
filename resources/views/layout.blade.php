@@ -14,15 +14,16 @@
 			font-size: 54px;
 			font-family: 'Open Sans';
 		}
+		.navbar-fixed-top{ top:5em; }
 	</style>
 </head>
 <body>
 	<div>
-		<div class="title">Sebo Linha</div>
+		<div class="title" style="position: relative; width: 100%; z-index:1; position:fixed; top: 0px; background-color: white;">Sebo Linha</div>
 		<div class="row">
 			@include('menus.menutopo')
 		</div>
-		<div class="container-fluid">
+		<div class="container-fluid" style="margin-top:9em;">
 			<div class="row">
 				<div class="col-sm-2">
 					@include ('menus.menulado')
