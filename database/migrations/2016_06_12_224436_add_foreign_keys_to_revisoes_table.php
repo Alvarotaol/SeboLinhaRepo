@@ -14,8 +14,8 @@ class AddForeignKeysToRevisoesTable extends Migration {
 	{
 		Schema::table('revisoes', function(Blueprint $table)
 		{
-			$table->foreign('idUsuario', 'fk_criador')->references('id')->on('usuarios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('idLivro', 'fk_livro_id2')->references('id')->on('livros')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('idUsuario', 'fk_criador')->references('id')->on('usuarios')->onUpdate('NO ACTION')->onDelete('CASCADE');
+			$table->foreign('idLivro', 'fk_livro_id2')->references('id')->on('livros')->onUpdate('NO ACTION')->onDelete('CASCADE');
 		});
 	}
 

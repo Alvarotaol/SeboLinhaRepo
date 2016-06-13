@@ -35,6 +35,7 @@
 	@endif
 </div>
 <hr>
+@if(Auth::user())
 <div class="row">
 <form action="/revisoes/new" method="POST" class="form-horizontal">
 	{!! csrf_field() !!}
@@ -60,4 +61,5 @@
 	</div>
 </form>
 </div>
+@endif
 @stop
