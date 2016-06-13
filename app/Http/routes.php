@@ -20,6 +20,9 @@ Route::get('livro/{livro}', 'LivroController@show');
 Route::post('livros/new', 'LivroController@store');
 Route::delete('livro/{livro}/delete', 'LivroController@delete');
 
+//Rotas de Revisão
+Route::post('/revisoes/new', 'RevisaoController@store');
+
 //Rotas dos usuários
 Route::get('usuarios', 'UsuarioController@index');
 Route::get('usuario/{livro}', 'UsuarioController@show');
