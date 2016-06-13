@@ -26,6 +26,10 @@ Route::delete('livro/{livro}/delete', 'LivroController@delete');
 Route::get('usuarios', 'UsuarioController@index');
 Route::get('usuario/{livro}', 'UsuarioController@show');
 
+//Rotas dos anúncios
+Route::get('anuncio/new', 'AnuncioController@new');
+Route::post('anuncio/new/create', 'AnuncioController@create');
+
 //Rota do Sol
 Route::auth();
 
