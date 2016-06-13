@@ -18,21 +18,43 @@
 </div>
 @endforeach
 </div>
-
+<hr>
 <form action="/livros/new" method="POST" class="form-horizontal">
 	{!! csrf_field() !!}
 	<div class = "row">
-		<div class = "col-sm-3">
-			Titulo
-			<textarea name="titulo" id="livro-name" class="form-control"></textarea>
-			ISBN
-			<textarea name="isbn" id="livro-isbn" class="form-control"></textarea>
-			Idioma
-			<textarea name="idioma" id="livro-idioma" class="form-control"></textarea>
-			Autor
-			<textarea name="autor" id="livro-autor" class="form-control"></textarea>
-
-			<button type="submit" class="btn btn-primary">Enviar</button>
+		<div class = "col-md-5">
+			<div class="panel panel-default">
+				<div class="panel-heading">Adicionar um novo livro</div>
+				<div class="form-group">
+					<label for="titulo" class="col-md-3 control-label">Titulo</label>
+					<div class="col-md-8">
+						<input type="text" name="titulo" id="titulo" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="isbn" class="col-md-3 control-label">ISBN</label>
+					<div class="col-md-8">
+						<input type="text" name="isbn" id="isbn" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="idioma" class="col-md-3 control-label">Idioma</label>
+					<div class="col-md-8">
+						<input type="text" name="idioma" id="idioma" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="autor" class="col-md-3 control-label">Autor</label>
+					<div class="col-md-8">
+						<input type="text" name="autor" id="autor" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-8 col-md-offset-3">
+						<button type="submit" class="btn btn-primary">Enviar</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </form>

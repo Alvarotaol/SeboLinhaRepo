@@ -24,9 +24,16 @@ class LivroController extends Controller
 
 	public function show($livro)
 	{
-		$getlivro = DB::select('select * from livros where id = ?', [$livro]);
+		$getlivro = DB::select('select * from livros where id = ?', [$livro])[0];
+
+		$revisoes = DB::select(' SELECT revisoes.texto, usuarios.nome, revisoes.data
+							FROM revisoes
+							INNER JOIN usuarios
+							ON revisoes.idUsuario=usuarios.id
+							WHERE revisoes.idLivro = ?', [$livro]);
 		return view('pages.livroindex', [
-			'livros'	=> $getlivro
+			'livro'   	=> $getlivro,
+			'revisoes'	=> $revisoes
 		]);
 	}
 

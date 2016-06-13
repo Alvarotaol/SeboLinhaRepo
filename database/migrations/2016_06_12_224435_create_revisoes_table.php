@@ -15,7 +15,7 @@ class CreateRevisoesTable extends Migration {
 		Schema::create('revisoes', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->string('texto', 45);
+			$table->text('texto');
 			$table->dateTime('data');
 			$table->integer('idUsuario')->index('fk_criador');
 			$table->integer('idLivro')->index('fk_livro_id2');
