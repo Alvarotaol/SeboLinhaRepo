@@ -28,6 +28,7 @@ Route::get('usuario/{livro}', 'UsuarioController@show');
 Route::get('anuncio/new', 'AnuncioController@new');
 Route::post('anuncio/new', 'AnuncioController@create');
 Route::get('anuncio/meus', 'AnuncioController@meus');
+Route::delete('anuncio/{anuncio}/delete', 'AnuncioController@delete');
 
 //Rota do Sol
 Route::auth();

@@ -16,20 +16,22 @@ class AnuncioController extends Controller
 	//
 	public function index()
 	{
-		$anuncios = DB::select('select anuncios.id as id, preco, livros.id as idLivro, nome, titulo from anuncios, livros, usuarios where anuncios.idLivro = livros.id and anuncios.idUsuario = usuarios.id');
+		$anuncios = DB::select('select anuncios.id as id, preco, livros.id as idLivro, nome, titulo, tipo from anuncios, livros, usuarios where anuncios.idLivro = livros.id and anuncios.idUsuario = usuarios.id');
 		$pagename = 'Meus anúncios';
-		return view('pages.meusanuncios', [
-			'anuncios'  	=> $anuncios,
-			'pagename'	=> $pagename
+		$cores = json_decode(json_encode(['33cc33', '3399ff', 'ffcc00']));
+		return view('pages.anuncioindex', [
+			'anuncios'  => $anuncios,
+			'pagename'	=> $pagename,
+			'cores' => $cores
 		]);
 	}
 
 	public function meus()
 	{
-		$anuncios = DB::select('select anuncios.id as id, preco, livros.id as idLivro, titulo from anuncios, livros where idUsuario = ? and anuncios.idLivro = livros.id', [Auth::user()->id]);
+		$anuncios = DB::select('select anuncios.id as id, preco, livros.id as idLivro, titulo, tipo from anuncios, livros where idUsuario = ? and anuncios.idLivro = livros.id', [Auth::user()->id]);
 		$pagename = 'Meus anúncios';
 		return view('pages.meusanuncios', [
-			'anuncios'  	=> $anuncios,
+			'anuncios'  => $anuncios,
 			'pagename'	=> $pagename
 		]);
 	}
