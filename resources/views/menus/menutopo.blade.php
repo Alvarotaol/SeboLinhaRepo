@@ -10,7 +10,7 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Início</a></li>
+				<li class="active"><a href="/">Início</a></li>
 				<li> <a href="/livros">Livros</a></li>
 				<li><a href="/usuarios">Usuarios</a></li>
 				<li class="dropdown">

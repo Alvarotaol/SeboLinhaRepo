@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Auth;
+
 //Para os comandos SQL """"Puros""""
 use DB;
 
@@ -14,13 +16,24 @@ class AnuncioController extends Controller
 	//
 	public function index()
 	{
-		$anuncios = DB::select('select * from anuncios');
-		$pagename = 'Lista de anúncios';
-		return view('pages.anuncios', [
+		$anuncios = DB::select('select anuncios.id as id, preco, livros.id as idLivro, nome, titulo from anuncios, livros, usuarios where anuncios.idLivro = livros.id and anuncios.idUsuario = usuarios.id');
+		$pagename = 'Meus anúncios';
+		return view('pages.meusanuncios', [
 			'anuncios'  	=> $anuncios,
 			'pagename'	=> $pagename
 		]);
 	}
+
+	public function meus()
+	{
+		$anuncios = DB::select('select anuncios.id as id, preco, livros.id as idLivro, titulo from anuncios, livros where idUsuario = ? and anuncios.idLivro = livros.id', [Auth::user()->id]);
+		$pagename = 'Meus anúncios';
+		return view('pages.meusanuncios', [
+			'anuncios'  	=> $anuncios,
+			'pagename'	=> $pagename
+		]);
+	}
+
 
 	public function show($anuncio)
 	{
@@ -32,8 +45,8 @@ class AnuncioController extends Controller
 
 	public function create(Request $request)
 	{	
-	 	//return $request->all();
-	 	DB::insert('INSERT INTO anuncios (tipo, preco, data, idLivro, idUsuario) VALUES (?, ?, ?, ?, ?)', [$request->tipo, $request->preco, hoje, $request->idLivro, $request->idUsuario]);
+	 	//return Auth::user();
+	 	DB::insert('INSERT INTO anuncios (tipo, preco, data, idLivro, idUsuario) VALUES (?, ?, ?, ?, ?)', [$request->tipo, $request->preco, date('Y/m/d'), $request->livro, Auth::user()->id]);
 	 	return back();
 	}
 
@@ -42,10 +55,10 @@ class AnuncioController extends Controller
 		$tipos = [['id' => 0, 'nome' => 'venda'], ['id' => 1, 'nome' => 'compra'], ['id' => 2, 'nome' => 'emprestimo']];
 		$tipos2 = json_decode(json_encode($tipos));
 		//$tipos = [['id' => '0', 'nome' => 'venda']];
-		//$getanuncio = DB::select('select * from usuarios where id = 1');
+		$livros = DB::select('select * from livros');
 		return view('pages.anuncionew', [
 			'tipos' => $tipos2,
-			'pagename' => 'Vicor'
+			'livros' => $livros
 		]);
 	}
 

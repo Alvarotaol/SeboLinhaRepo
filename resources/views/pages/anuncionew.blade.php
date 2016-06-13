@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="/anuncio/new/create" method="POST" class="form-horizontal">
+<form action="/anuncio/new" method="POST" class="form-horizontal">
 	{!! csrf_field() !!}
 	<div class = "row">
 		<div class = "col-sm-3">
@@ -17,8 +17,15 @@
 					<option value="{{$tipo->id}}">{{$tipo->nome}}</option>
 				@endforeach
 			</select>
-			<input type="text" name="preco" id="anuncio-preco" class="form-control"></textbox>
-			Idioma
+			Preço
+			<input type="text" name="preco" id="anuncio-preco" class="form-control">
+			Livro
+			<select name="livro" id="anuncio-livro" class="form-control">
+				<option value=""></option>
+				@foreach($livros as $livro)
+					<option value="{{$livro->id}}">{{$livro->titulo}}</option>
+				@endforeach
+			</select>
 
 			<button type="submit" class="btn btn-primary">Enviar</button>
 		</div>

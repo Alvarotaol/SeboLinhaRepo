@@ -12,9 +12,7 @@
 */
 
 //Route::get('/', 'LayoutController@home');
-Route::get('/', function(){
-	return view('main');
-});
+Route::get('/', 'AnuncioController@index');
 
 //Rotas dos livros
 Route::get('livros', 'LivroController@index');
@@ -28,7 +26,8 @@ Route::get('usuario/{livro}', 'UsuarioController@show');
 
 //Rotas dos anúncios
 Route::get('anuncio/new', 'AnuncioController@new');
-Route::post('anuncio/new/create', 'AnuncioController@create');
+Route::post('anuncio/new', 'AnuncioController@create');
+Route::get('anuncio/meus', 'AnuncioController@meus');
 
 //Rota do Sol
 Route::auth();
