@@ -5,10 +5,19 @@
 @section('content')
 <div class="row">
 	<div class="col-sm-3">
+		<img src="http://placehold.it/200x300">
+	</div>
+	<div class="col-sm-6">
 		<h2><a href="/livro/{{$livro->id}}">{{$livro->titulo}}</a></h2>
 		<div>Por <i>{{$livro->autor}}</i></div>
-		<div>Idioma: {{$livro->idioma}}</div>
-		<div>ISBN: {{$livro->isbn}}</div>
+		<div style="margin-top: 2em"> {{$livro->sumario}}</div>
+		<h4>Detalhes sobre este livro</h4>
+		<div><b>Idioma:</b> {{$livro->idioma}}</div>
+		<div><b>ISBN:</b> {{$livro->isbn}}</div>
+		<div><b>Lançamento:</b> {{$livro->lancamento}}</div>
+	</div>
+	<div class="col-sm-3">
+	<h4>Anúncios</h4>
 	</div>
 </div>
 <hr>
@@ -16,17 +25,22 @@
 	@if (count($revisoes) > 0)
 		@foreach ($revisoes as $revisao)
 		<div class="row">
-			<div class="col-sm-9">
+			<div class="col-sm-12">
 				<div class="panel panel-default">
 				<div class="panel-heading">
 				<b>{{ $revisao->nome }}</b>
-				<span>
+
+				<span style="float:right;">
 					<form action="/revisao/{{ $revisao->id }}/avaliar" method="POST" class="form-horizontal">
 					{!! csrf_field() !!}
-						<button type="submit" name="nota" id="nota" value ="0" class="btn btn-primary">Dislike</button>
+						@if(Auth::user())
+						<button type="submit" name="nota" id="nota" value ="0" class="btn btn-danger glyphicon glyphicon-thumbs-down"></button>
+						@endif
 						<span id="stars" class="starrr" data-rating='{{ $revisao->media }}'></span>
 						<span id="count"></span>
-						<button type="submit" name="nota" id="nota" value ="1" class="btn btn-primary">Like</button>
+						@if(Auth::user())
+						<button type="submit" name="nota" id="nota" value ="1" class="btn btn-success glyphicon glyphicon-thumbs-up"></button>
+						@endif
 					</form>
 				</span>
 				
