@@ -29,4 +29,12 @@ Route::get('usuario/{livro}', 'UsuarioController@show');
 //Rota do Sol
 Route::auth();
 
+//Rota das categorias
+Route::get('categorias', 'CategoriasController@index');
+Route::get('categorias/{categoria}', 'CategoriasController@show');
+Route::post('categoria/new', 'CategoriasController@store');
+Route::delete('categorias/{categoria}/delete', 'CategoriasController@delete');
+
+Route::post('categoriasLivro/{livro}', 'CategoriasLivroController@store');
+
 Route::get('/home', 'HomeController@index');

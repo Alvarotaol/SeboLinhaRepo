@@ -31,7 +31,16 @@
 			<textarea name="idioma" id="livro-idioma" class="form-control"></textarea>
 			Autor
 			<textarea name="autor" id="livro-autor" class="form-control"></textarea>
-
+			
+			<div class = "form-group">
+				<label for="sel1">Categoria:</label>
+				<select name ="categoria" class="form-control" id="categoria-livro">
+					@foreach ($categorias as $categoria)
+						<option value="{{$categoria->id}}">{{$categoria-> nome}}</option>
+					@endforeach
+				</select>
+			</div>
+			
 			<button type="submit" class="btn btn-primary">Enviar</button>
 		</div>
 	</div>
