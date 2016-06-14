@@ -26,11 +26,19 @@ class LivroController extends Controller
 	{
 		$getlivro = DB::select('select * from livros where id = ?', [$livro])[0];
 
-		$revisoes = DB::select(' SELECT revisoes.texto, usuarios.nome, revisoes.data
-							FROM revisoes
-							INNER JOIN usuarios
-							ON revisoes.idUsuario=usuarios.id
-							WHERE revisoes.idLivro = ?', [$livro]);
+		$revisoes = DB::select('SELECT c.id, c.texto, c.nome, c.data, COALESCE(c.tmedia, 0) as media FROM
+									(SELECT a.id, a.texto, a.nome, a.data, b.tmedia FROM
+										(SELECT revisoes.id, revisoes.texto, usuarios.nome, revisoes.data
+										FROM revisoes
+										LEFT JOIN usuarios
+										ON revisoes.idUsuario=usuarios.id
+										WHERE revisoes.idLivro = ?) AS a
+									LEFT JOIN
+										(SELECT idRevisao, TRUNCATE(5 * SUM(nota = 1)/COUNT(*),0)+1
+										AS tmedia
+										FROM usuarios_revisoes
+										GROUP BY idRevisao) AS b
+									ON b.idRevisao = a.id) AS c', [$livro]);
 		return view('pages.livroindex', [
 			'livro'   	=> $getlivro,
 			'revisoes'	=> $revisoes

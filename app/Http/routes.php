@@ -22,6 +22,7 @@ Route::delete('livro/{livro}/delete', 'LivroController@delete');
 
 //Rotas de Revisão
 Route::post('/revisoes/new', 'RevisaoController@store');
+Route::post('/revisao/{revisao}/avaliar', 'RevisaoController@rate');
 
 //Rotas dos usuários
 Route::get('usuarios', 'UsuarioController@index');

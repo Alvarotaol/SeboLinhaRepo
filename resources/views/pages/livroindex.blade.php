@@ -18,7 +18,19 @@
 		<div class="row">
 			<div class="col-sm-9">
 				<div class="panel panel-default">
-				<div class="panel-heading"><b>{{ $revisao->nome }}</b></div>
+				<div class="panel-heading">
+				<b>{{ $revisao->nome }}</b>
+				<span>
+					<form action="/revisao/{{ $revisao->id }}/avaliar" method="POST" class="form-horizontal">
+					{!! csrf_field() !!}
+						<button type="submit" name="nota" id="nota" value ="0" class="btn btn-primary">Dislike</button>
+						<span id="stars" class="starrr" data-rating='{{ $revisao->media }}'></span>
+						<span id="count"></span>
+						<button type="submit" name="nota" id="nota" value ="1" class="btn btn-primary">Like</button>
+					</form>
+				</span>
+				
+				</div>
 					<div style="margin-top: 1em; margin-bottom: 1em; margin-left: 1em; margin-right: 1em;">{{ $revisao->texto }}</div>
 					<div class="panel-footer clearfix">
 						<div class="pull-right">
