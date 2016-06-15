@@ -16,9 +16,12 @@ class BuscaController extends Controller
 	//
 	public function buscar(Request $request)
 	{
+		$query = str_replace('?', $request->busca, 'select * from livros where titulo like "%?%"');
 		//$resultados = DB::select('select * from livros where titulo like "%?%"', [$request->busca]);
-		$resultados = DB::select('select * from livros');
-		return $resultados;
+		$resultados = DB::select($query);
+		return view('pages.buscaindex', [
+			'resultados' => $resultados
+		]);
 	}
 
 
