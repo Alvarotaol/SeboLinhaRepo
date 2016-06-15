@@ -13,6 +13,7 @@
 				<li class="active"><a href="/">Início</a></li>
 				<li> <a href="/livros">Livros</a></li>
 				<li><a href="/usuarios">Usuarios</a></li>
+				<li><a href="/categorias">Categorias</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 					<ul class="dropdown-menu">

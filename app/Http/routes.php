@@ -28,10 +28,16 @@ Route::get('usuarios', 'UsuarioController@index');
 Route::get('usuario/{livro}', 'UsuarioController@show');
 
 //Rotas dos anúncios
-Route::get('anuncio/new', 'AnuncioController@new');
+Route::get('anuncio/new', 'AnuncioController@newOne');
 Route::post('anuncio/new', 'AnuncioController@create');
 Route::get('anuncio/meus', 'AnuncioController@meus');
 Route::delete('anuncio/{anuncio}/delete', 'AnuncioController@delete');
+
+//Rota das categorias
+Route::get('categorias', 'CategoriasController@index');
+Route::get('categorias/{categoria}', 'CategoriasController@show');
+Route::post('categoria/new', 'CategoriasController@store');
+Route::delete('categorias/{categoria}/delete', 'CategoriasController@delete');
 
 //Rota do Sol
 Route::auth();

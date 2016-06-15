@@ -52,7 +52,7 @@ class AnuncioController extends Controller
 	 	return back();
 	}
 
-	public function new()
+	public function newOne()
 	{
 		$tipos = [['id' => 0, 'nome' => 'venda'], ['id' => 1, 'nome' => 'compra'], ['id' => 2, 'nome' => 'emprestimo']];
 		$tipos2 = json_decode(json_encode($tipos));

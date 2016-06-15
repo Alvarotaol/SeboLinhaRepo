@@ -9,6 +9,9 @@
 		<div>Por <i>{{$livro->autor}}</i></div>
 		<div>Idioma: {{$livro->idioma}}</div>
 		<div>ISBN: {{$livro->isbn}}</div>
+		@foreach ($categorias as $categoria)
+			<div>Categoria: {{$categoria->nome}}</div>
+		@endforeach
 	</div>
 </div>
 <hr>

@@ -50,6 +50,17 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="categoria" class="col-md-3 control-label">Categoria</label>
+					<div class="col-md-8">
+					<select name="categoria" id="categoria-livro" class="form-control">
+						<option value=""></option>
+						@foreach($categorias as $categoria)
+							<option value="{{$categoria->id}}">{{$categoria->nome}}</option>
+						@endforeach
+					</select>
+				</div>
+
+				<div class="form-group">
 					<div class="col-md-8 col-md-offset-3">
 						<button type="submit" class="btn btn-primary">Enviar</button>
 					</div>

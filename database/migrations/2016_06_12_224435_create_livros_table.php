@@ -20,7 +20,7 @@ class CreateLivrosTable extends Migration {
 			$table->string('idioma', 45);
 			$table->string('autor', 60)->nullable();
 			$table->text('sumario')->nullable();
-			$table->date('lancamento');
+			$table->date('lancamento')->nullable();
 
 		});
 	}

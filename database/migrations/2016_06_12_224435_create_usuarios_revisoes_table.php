@@ -14,10 +14,10 @@ class CreateUsuariosRevisoesTable extends Migration {
 	{
 		Schema::create('usuarios_revisoes', function(Blueprint $table)
 		{
-			$table->integer('id')->primary();
-			$table->integer('nota')->unsigned()->default(0);
-			$table->integer('idUsuario')->index('fk_revisao');
-			$table->integer('idRevisao')->index('fk_usuario');
+			$table->integer('id', true);
+			$table->integer('nota')->default(0)->unsigned();
+			$table->integer('idUsuario')->index('fk_usuario');
+			$table->integer('idRevisao')->index('fk_revisao');
 		});
 	}
 
