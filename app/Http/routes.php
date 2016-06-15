@@ -34,6 +34,9 @@ Route::post('anuncio/new', 'AnuncioController@create');
 Route::get('anuncio/meus', 'AnuncioController@meus');
 Route::delete('anuncio/{anuncio}/delete', 'AnuncioController@delete');
 
+//Rotas de pesquisa
+Route::get('buscar', 'BuscaController@buscar');
+
 //Rota do Sol
 Route::auth();
 
