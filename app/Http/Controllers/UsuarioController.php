@@ -24,11 +24,11 @@ class UsuarioController extends Controller
 
 	public function show($usuario)
 	{
-		$getusuario = DB::select('select * from usuarios where id = ?', [$usuario]);
+		$getusuario = DB::select('select * from usuarios where id = ?', [$usuario])[0];
 
 		$pagename = 'Lista de usuarios';
 		return view('pages.usuarioindex', [
-			'usuarios'	=> $getusuario
+			'usuario'	=> $getusuario
 		]);
 	}
 

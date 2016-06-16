@@ -6,17 +6,19 @@
 <div class = "row">
 @foreach ($livros as $livro)
 <div class="col-sm-3">
-	<img src="http://placehold.it/125x150">
-	<h4><a href="/livro/{{$livro->id}}">{{$livro->titulo}}</a></h4>
-	<div>Por <i>{{$livro->autor}}</i></div>
-	<div>Idioma: {{$livro->idioma}}</div>
-	<div>ISBN: {{$livro->isbn}}</div>
-	<div> {{$livro->revisoes}} Revisões</div>
-	<form action="/livro/{{$livro->id}}/delete" method="POST" class="form-horizontal">
-		{!! csrf_field() !!}
-		{{ method_field('DELETE') }}
-		<button type="submit" class="btn btn-primary">Remover</button>
-	</form>
+	<div class="thumbnail">
+		<img src="http://placehold.it/125x150">
+		<h4><a href="/livro/{{$livro->id}}">{{$livro->titulo}}</a></h4>
+		<div>Por <i>{{$livro->autor}}</i></div>
+		<div>Idioma: {{$livro->idioma}}</div>
+		<div>ISBN: {{$livro->isbn}}</div>
+		<div style="color: #ee4444"> {{$livro->revisoes}} Revisões</div>
+		<form action="/livro/{{$livro->id}}/delete" method="POST" class="form-horizontal">
+			{!! csrf_field() !!}
+			{{ method_field('DELETE') }}
+			<button type="submit" class="btn btn-primary">Remover</button>
+		</form>
+	</div>
 </div>
 @endforeach
 </div>

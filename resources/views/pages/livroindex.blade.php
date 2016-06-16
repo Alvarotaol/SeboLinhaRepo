@@ -22,13 +22,14 @@
 </div>
 <hr>
 <div>
+<div class="well">
 	@if (count($revisoes) > 0)
 		@foreach ($revisoes as $revisao)
 		<div class="row">
 			<div class="col-sm-12">
-				<div class="panel panel-default">
-				<div class="panel-heading">
+				<img style="" src="http://placehold.it/50x50">
 				<b>{{ $revisao->nome }}</b>
+				<span style="font-size: 9px">{{ $revisao->data }}</span>
 
 				<span style="float:right;">
 					<form action="/revisao/{{ $revisao->id }}/avaliar" method="POST" class="form-horizontal">
@@ -36,7 +37,7 @@
 						@if(Auth::user())
 						<button type="submit" name="nota" id="nota" value ="0" class="btn btn-danger glyphicon glyphicon-thumbs-down"></button>
 						@endif
-						<span id="stars" class="starrr" data-rating='{{ $revisao->media }}'></span>
+						Revisão ajudou: <span id="stars" class="starrr" data-rating='{{ $revisao->media }}'></span>
 						<span id="count"></span>
 						@if(Auth::user())
 						<button type="submit" name="nota" id="nota" value ="1" class="btn btn-success glyphicon glyphicon-thumbs-up"></button>
@@ -44,17 +45,11 @@
 					</form>
 				</span>
 				
-				</div>
-					<div style="margin-top: 1em; margin-bottom: 1em; margin-left: 1em; margin-right: 1em;">{{ $revisao->texto }}</div>
-					<div class="panel-footer clearfix">
-						<div class="pull-right">
-							{{ $revisao->data }}
-						</div>
-					</div>
-				</div>
 				
+				<div style="margin-top: 1em; margin-bottom: 1em; margin-left: 1em; margin-right: 1em;">{{ $revisao->texto }}</div>
 			</div>
 		</div>
+		<hr>
 		@endforeach
 	@else
 		<h4> Este livro atualmente não tem revisões. </h4>

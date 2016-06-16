@@ -37,4 +37,8 @@ Route::delete('anuncio/{anuncio}/delete', 'AnuncioController@delete');
 //Rota do Sol
 Route::auth();
 
+//Rotas das denúncias
+Route::get('usuario/{usuario}/denuncia', 'DenunciaController@show');
+Route::post('usuario/{usuario}/denunciar', 'DenunciaController@denunciar');
+
 Route::get('/home', 'HomeController@index');
