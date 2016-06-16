@@ -22,6 +22,7 @@ Route::delete('livro/{livro}/delete', 'LivroController@delete');
 
 //Rotas de Revisão
 Route::post('/revisoes/new', 'RevisaoController@store');
+Route::post('/revisao/{revisao}/avaliar', 'RevisaoController@rate');
 
 //Rotas dos usuários
 Route::get('usuarios', 'UsuarioController@index');
@@ -41,5 +42,9 @@ Route::delete('categorias/{categoria}/delete', 'CategoriasController@delete');
 
 //Rota do Sol
 Route::auth();
+
+//Rotas das denúncias
+Route::get('usuario/{usuario}/denuncia', 'DenunciaController@show');
+Route::post('usuario/{usuario}/denunciar', 'DenunciaController@denunciar');
 
 Route::get('/home', 'HomeController@index');

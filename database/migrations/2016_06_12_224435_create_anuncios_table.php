@@ -19,6 +19,7 @@ class CreateAnunciosTable extends Migration {
 			$table->dateTime('dataDev')->nullable();
 			$table->float('preco', 10, 0)->nullable();
 			$table->dateTime('data');
+			$table->text('texto')->nullable();
 			$table->integer('idLivro')->nullable()->index('fk_livro');
 			$table->integer('idUsuario')->nullable()->index('fk_anunciante');
 		});

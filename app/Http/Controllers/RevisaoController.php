@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use Carbon\Carbon;
 
+use Auth;
+
 use DB;
 
 class RevisaoController extends Controller
@@ -35,6 +37,14 @@ class RevisaoController extends Controller
 	 	//return $request->all();
 	 	$time = Carbon::now();
 	 	DB::insert('INSERT INTO revisoes (texto, data, idUsuario, idLivro) VALUES (?, ?, ?, ?)', [$request->texto, $time,intval($request->idUsuario), intval($request->idLivro)]);
+	 	return back();
+	}
+
+	public function rate(Request $request, $id)
+	{	
+	 	//return $request->all();
+	 	//$time = Carbon::now();
+	 	DB::insert('INSERT INTO usuarios_revisoes (nota, idUsuario, idRevisao) VALUES (?, ?, ?)', [$request->nota, Auth::user()->id, $id]);
 	 	return back();
 	}
 }
