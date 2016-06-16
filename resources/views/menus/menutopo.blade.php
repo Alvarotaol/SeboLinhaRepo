@@ -24,7 +24,7 @@
 				</li>
 			</ul>
 			<form action="/buscar" class="nav navbar-search pull-right" style="display: flex; align-items: center; min-height: 34px;">
-				<input type="text" name="busca" class="search-query span2" placeholder="Buscar..." style ="width:250px !important; height:30px !important;">
+				<input type="text" name="titulo" class="search-query span2" placeholder="Buscar..." style ="width:250px !important; height:30px !important;">
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Authentication Links -->
