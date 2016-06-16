@@ -40,6 +40,9 @@ Route::get('categorias/{categoria}', 'CategoriasController@show');
 Route::post('categoria/new', 'CategoriasController@store');
 Route::delete('categorias/{categoria}/delete', 'CategoriasController@delete');
 
+//Rotas de pesquisa
+Route::get('buscar', 'BuscaController@buscar');
+
 //Rota do Sol
 Route::auth();
 
