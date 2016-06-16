@@ -34,6 +34,12 @@ class LivroController extends Controller
 		$getlivro = DB::select('SELECT id, titulo, isbn, idioma, autor, sumario, lancamento
 								FROM livros
 								WHERE id = ?', [$livro])[0];
+		$anuncios = DB::select('SELECT anuncios.tipo, anuncios.dataDev, anuncios.preco, anuncios.data, anuncios.idLivro, usuarios.nome
+								FROM anuncios INNER JOIN usuarios
+								ON anuncios.idUsuario = usuarios.id
+
+								WHERE idLivro = ?
+								ORDER BY tipo', [$livro]);
 
 		$revisoes = DB::select('
 									SELECT a.id, a.texto, a.nome, a.data, COALESCE(b.media, 0) AS media FROM
@@ -49,10 +55,12 @@ class LivroController extends Controller
 										GROUP BY idRevisao) AS b
 									ON b.idRevisao = a.id', [$livro]
 								);
-
+		$cores = json_decode(json_encode(['33cc33', '3399ff', 'ffcc00']));
 		return view('pages.livroindex', [
 			'livro'   	=> $getlivro,
-			'revisoes'	=> $revisoes
+			'revisoes'	=> $revisoes,
+			'anuncios'	=> $anuncios,
+			'cores'   	=> $cores
 		]);
 	}
 

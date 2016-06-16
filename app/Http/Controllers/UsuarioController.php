@@ -25,10 +25,18 @@ class UsuarioController extends Controller
 	public function show($usuario)
 	{
 		$getusuario = DB::select('select * from usuarios where id = ?', [$usuario])[0];
-
+		$anuncios = DB::select('SELECT anuncios.tipo, anuncios.dataDev, anuncios.preco, anuncios.data, anuncios.idLivro, livros.titulo
+								FROM anuncios INNER JOIN usuarios
+								ON anuncios.idUsuario = usuarios.id
+								INNER JOIN livros ON anuncios.idLivro = livros.id
+								WHERE idUsuario = ?
+								ORDER BY tipo', [$usuario]); 
+		$cores = json_decode(json_encode(['33cc33', '3399ff', 'ffcc00']));
 		$pagename = 'Lista de usuarios';
 		return view('pages.usuarioindex', [
-			'usuario'	=> $getusuario
+			'usuario' 	=> $getusuario,
+			'anuncios'	=> $anuncios,
+			'cores'   	=> $cores
 		]);
 	}
 

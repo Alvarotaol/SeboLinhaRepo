@@ -21,5 +21,20 @@
 		</div>
 	</div>
 </div>
+<div class="row">
+	<div class="col-sm-12">
+		<h4>Anúncios criados por {{ $usuario->nome }}</h4>
+		@foreach ($anuncios as $anuncio)
+			<div class="col-sm-4">
+				<div class="panel">
+					<div class="panel-heading" style="background:#{{ $cores[$anuncio->tipo] }}">{{ $anuncio->titulo }}</div>
+					<div class="panel-body">
+						<h4>R$ {{ $anuncio->preco }}</h4>
+					</div>
+				</div>
+			</div>
+		@endforeach
+	</div>
+</div>
 
 @stop
