@@ -68,12 +68,22 @@ class LivroController extends Controller
 
 	public function store(Request $request)
 	{		 	
-	 	$idCategoria = $request->input('categoria');
+	 	
+	 	DB::insert('INSERT INTO livros (titulo, isbn, idioma, autor, sumario, lancamento) VALUES (?, ?, ?, ?, ?, ?)', [$request->titulo, $request->isbn, $request->idioma, $request->autor, $request->sumario, $request->data]);
+
+	 	$idCategorias = $request->input('categorias');
+	 	$numCategoriasSelect = count($idCategorias);
 	 	$idLivro = DB::table('livros')->max('id'); // Equivalente ao codigo SQL: 'SELECT MAX(id) FROM livros'
 
-	 	DB::insert('INSERT INTO categorias_livros (idCategoria, idLivro) VALUES (?, ?)', [intval($idCategoria), intval($idLivro)]);
+	 	//echo $numCategoriasSelect;
+	 	for($x = 0; $x < $numCategoriasSelect; $x++) {
+    		DB::insert('INSERT INTO categorias_livros (idCategoria, idLivro) VALUES (?, ?)', [intval($idCategorias[$x]), intval($idLivro)]);
+		}		
+	 	
+	 	//DB::insert('INSERT INTO categorias_livros (idCategoria, idLivro) VALUES (?, ?)', [intval($idCategoria), intval($idLivro)]);
+		//return $idCategorias->all();	 	
 	 	//return $request->all();
-	 	DB::insert('INSERT INTO livros (titulo, isbn, idioma, autor, sumario, lancamento) VALUES (?, ?, ?, ?, ?, ?)', [$request->titulo, $request->isbn, $request->idioma, $request->autor, $request->sumario, $request->data]);
+	 
 	 	return back();
 	}
 	public function delete($livro)

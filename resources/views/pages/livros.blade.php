@@ -68,12 +68,12 @@
 				<div class="form-group">
 					<label for="categoria" class="col-md-3 control-label">Categoria</label>
 					<div class="col-md-8">
-					<select name="categoria" id="categoria-livro" class="form-control">
-						<option value=""></option>
-						@foreach($categorias as $categoria)
-							<option value="{{$categoria->id}}">{{$categoria->nome}}</option>
-						@endforeach
-					</select>
+						<div class="checkbox">
+  							@foreach($categorias as $categoria)
+  								<label><input type="checkbox" name ="categorias[]" value="{{$categoria->id}}">{{$categoria->nome}}</label>
+							@endforeach
+						</div>
+					</div>
 				</div>
 
 				<div class="form-group">

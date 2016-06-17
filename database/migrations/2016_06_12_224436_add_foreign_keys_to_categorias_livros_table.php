@@ -14,8 +14,8 @@ class AddForeignKeysToCategoriasLivrosTable extends Migration {
 	{
 		Schema::table('categorias_livros', function(Blueprint $table)
 		{
-			$table->foreign('id', 'fk_categoria')->references('id')->on('categorias')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('id', 'fk_livro_id')->references('id')->on('livros')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('idCategoria', 'fk_categoria')->references('id')->on('categorias')->onUpdate('NO ACTION')->onDelete('CASCADE');
+			$table->foreign('idLivro', 'fk_livro_id')->references('id')->on('livros')->onUpdate('NO ACTION')->onDelete('CASCADE');
 		});
 	}
 

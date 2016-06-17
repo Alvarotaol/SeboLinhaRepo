@@ -15,6 +15,10 @@
 		<div><b>Idioma:</b> {{$livro->idioma}}</div>
 		<div><b>ISBN:</b> {{$livro->isbn}}</div>
 		<div><b>Lançamento:</b> {{$livro->lancamento}}</div>
+		<div><b>Categorias</b>:
+		@foreach ($categorias as $categoria)
+			{{$categoria->nome}}; 
+		@endforeach
 	</div>
 	<div class="col-sm-3">
 	<h4>Anúncios</h4>
