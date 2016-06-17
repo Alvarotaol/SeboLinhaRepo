@@ -35,6 +35,9 @@ class RevisaoController extends Controller
 	public function store(Request $request)
 	{	
 	 	//return $request->all();
+	 	$this->validate($request,[
+	 		'texto' => 'required|min:25'
+	 	]);
 	 	$time = Carbon::now();
 	 	DB::insert('INSERT INTO revisoes (texto, data, idUsuario, idLivro) VALUES (?, ?, ?, ?)', [$request->texto, $time,intval($request->idUsuario), intval($request->idLivro)]);
 	 	return back();

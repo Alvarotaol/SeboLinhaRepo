@@ -7,7 +7,9 @@
 	</div>
 	<div class="col-sm-9">
 		<h4>{{ $usuario->nome }}</h4>
-		<b>email:</b> {{ $usuario->email }}
+		<div><b>email:</b> {{ $usuario->email }}</div>
+		<div><b>CPF:</b> {{ $usuario->cpf }}</div>
+		<div><b>Endereço:</b> {{ $usuario->endereco }}</div>
 		<div class="row">
 			<div class="col-md-6">
 			@if(Auth::user() and $usuario->id != Auth::user()->id)
@@ -23,7 +25,11 @@
 </div>
 <div class="row">
 	<div class="col-sm-12">
-		<h4>Anúncios criados por {{ $usuario->nome }}</h4>
+		@if(count($anuncios) > 0)
+			<h4>Anúncios criados por {{ $usuario->nome }}</h4>
+		@else
+			<h4>{{ $usuario->nome }} atualmente não tem nenhum anúncio.</h4>
+		@endif
 		@foreach ($anuncios as $anuncio)
 			<div class="col-sm-4">
 				<div class="panel">

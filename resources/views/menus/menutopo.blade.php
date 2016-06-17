@@ -7,6 +7,9 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
+			<a class="navbar-brand" href="{{ url('/') }}">
+				Sebolinha
+			</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
@@ -24,14 +27,12 @@
 					</ul>
 				</li>
 			</ul>
-			<form action="/buscar" class="nav navbar-search pull-right" style="display: flex; align-items: center; min-height: 34px;">
-				<input type="text" name="titulo" class="search-query span2" placeholder="Buscar..." style ="width:250px !important; height:30px !important;">
-			</form>
+			
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Authentication Links -->
 				@if (Auth::guest())
-					<li><a href="{{ url('/login') }}">Login</a></li>
-					<li><a href="{{ url('/register') }}">Register</a></li>
+					<li><a href="{{ url('/login') }}">Entrar</a></li>
+					<li><a href="{{ url('/register') }}">Cadastro</a></li>
 				@else
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -39,11 +40,14 @@
 						</a>
 
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+							<li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Sair</a></li>
 						</ul>
 					</li>
 				@endif
 			</ul>
+			<form action="/buscar" class="nav navbar-form navbar-input-group navbar-right" role="search" style="">
+				<input type="text" name="titulo" class="search-query span2" placeholder="Buscar...">
+			</form>
 		</div><!--/.nav-collapse -->
 	</div><!--/.container-fluid -->
 </nav>

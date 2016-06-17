@@ -7,7 +7,7 @@
 	<div class="col-sm-3">
 		<img src="http://placehold.it/200x300">
 	</div>
-	<div class="col-sm-6">
+	<div class="col-sm-4">
 		<h2><a href="/livro/{{$livro->id}}">{{$livro->titulo}}</a></h2>
 		<div>Por <i>{{$livro->autor}}</i></div>
 		<div style="margin-top: 2em"> {{$livro->sumario}}</div>
@@ -17,23 +17,25 @@
 		<div><b>Lançamento:</b> {{$livro->lancamento}}</div>
 		<div><b>Categorias</b>:
 		@foreach ($categorias as $categoria)
-			{{$categoria->nome}}; 
+			<span class="label label-success">{{$categoria->nome}}</span>
 		@endforeach
+		</div>
 	</div>
 	<hr>
+	</div>
 	<div class="row">
-	<h4> Anúncios </h4>
-	@foreach ($anuncios as $anuncio)
-		<div class="col-sm-3">
-			<div class="panel">
-				<div class="panel-heading" style="background:#{{ $cores[$anuncio->tipo] }}"></div>
-				<div class="panel-body">
-					<h4>R$ {{ $anuncio->preco }}</h4>
-					Oferecido por {{ $anuncio->nome }}
+		<h4> Anúncios </h4>
+		@foreach ($anuncios as $anuncio)
+			<div class="col-sm-3">
+				<div class="panel">
+					<div class="panel-heading" style="background:#{{ $cores[$anuncio->tipo] }}"></div>
+					<div class="panel-body">
+						<h4>R$ {{ $anuncio->preco }}</h4>
+						Oferecido por <a href="/usuario/{{$anuncio->idUsuario}}">{{ $anuncio->nome }}</a>
+					</div>
 				</div>
 			</div>
-		</div>
-	@endforeach
+		@endforeach
 	</div>
 	<hr>
 	<div>
@@ -81,7 +83,7 @@
 			<div class = "col-md-10 col-md-offset-1">
 				<div class="panel panel-default">
 					<div class="panel-heading">Adicionar uma nova revisão</div>
-					<div class="form-group">
+					<div class="form-group {{ $errors->has('texto') ? ' has-error' : '' }}">
 						<label for="texto" class="col-md-2 control-label">Comentário</label>
 						<div class="col-md-9">
 							<textarea name="texto" id="texto" class="form-control"></textarea>

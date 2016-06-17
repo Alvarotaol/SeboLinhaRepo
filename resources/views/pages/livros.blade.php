@@ -13,53 +13,59 @@
 		<div>Idioma: {{$livro->idioma}}</div>
 		<div>ISBN: {{$livro->isbn}}</div>
 		<div style="color: #ee4444"> {{$livro->revisoes}} Revisões</div>
+		@if(Auth::user())
 		<form action="/livro/{{$livro->id}}/delete" method="POST" class="form-horizontal">
 			{!! csrf_field() !!}
 			{{ method_field('DELETE') }}
 			<button type="submit" class="btn btn-primary">Remover</button>
 		</form>
+		@endif
 	</div>
 </div>
 @endforeach
 </div>
 <hr>
+@if(Auth::user())
 <form action="/livros/new" method="POST" class="form-horizontal">
 	{!! csrf_field() !!}
 	<div class = "row">
 		<div class = "col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">Adicionar um novo livro</div>
-				<div class="form-group">
+				<div class="form-group {{ $errors->has('titulo') ? ' has-error' : '' }}">
 					<label for="titulo" class="col-md-3 control-label">Titulo</label>
 					<div class="col-md-8">
 						<input type="text" name="titulo" id="titulo" class="form-control">
+						@if ($errors->has('titulo'))
+
+						@endif
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group {{ $errors->has('isbn') ? ' has-error' : '' }}">
 					<label for="isbn" class="col-md-3 control-label">ISBN</label>
 					<div class="col-md-8">
 						<input type="text" name="isbn" id="isbn" class="form-control" placeholder="International Standard Book Number">
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group {{ $errors->has('idioma') ? ' has-error' : '' }}">
 					<label for="idioma" class="col-md-3 control-label">Idioma</label>
 					<div class="col-md-8">
 						<input type="text" name="idioma" id="idioma" class="form-control" placeholder="O idioma do livro.">
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group {{ $errors->has('autor') ? ' has-error' : '' }}">
 					<label for="autor" class="col-md-3 control-label">Autor</label>
 					<div class="col-md-8">
 						<input type="text" name="autor" id="autor" class="form-control" placeholder="O autor do livro.">
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group {{ $errors->has('sumario') ? ' has-error' : '' }}">
 					<label for="sumario" class="col-md-3 control-label">Sumário</label>
 					<div class="col-md-8">
 						<textarea name="sumario" id="sumario" class="form-control"></textarea>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group {{ $errors->has('data') ? ' has-error' : '' }}">
 					<label for="data" class="col-md-3 control-label">Lançamento</label>
 					<div class="col-md-8">
 						<input type="datetime-local" name="data" id="data" class="form-control" placeholder="YYYY-MM-DD">
@@ -69,8 +75,8 @@
 					<label for="categoria" class="col-md-3 control-label">Categoria</label>
 					<div class="col-md-8">
 						<div class="checkbox">
-  							@foreach($categorias as $categoria)
-  								<label><input type="checkbox" name ="categorias[]" value="{{$categoria->id}}">{{$categoria->nome}}</label>
+							@foreach($categorias as $categoria)
+								<label><input type="checkbox" name ="categorias[]" value="{{$categoria->id}}">{{$categoria->nome}}</label>
 							@endforeach
 						</div>
 					</div>
@@ -85,5 +91,6 @@
 		</div>
 	</div>
 </form>
+@endif
 
 @stop

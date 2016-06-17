@@ -37,7 +37,7 @@ class LivroController extends Controller
 		$getlivro = DB::select('SELECT id, titulo, isbn, idioma, autor, sumario, lancamento
 								FROM livros
 								WHERE id = ?', [$livro])[0];
-		$anuncios = DB::select('SELECT anuncios.tipo, anuncios.dataDev, anuncios.preco, anuncios.data, anuncios.idLivro, usuarios.nome
+		$anuncios = DB::select('SELECT anuncios.tipo, anuncios.dataDev, anuncios.preco, anuncios.data, anuncios.idLivro, usuarios.nome, anuncios.idUsuario
 								FROM anuncios INNER JOIN usuarios
 								ON anuncios.idUsuario = usuarios.id
 
@@ -76,9 +76,18 @@ class LivroController extends Controller
 	}
 
 	public function store(Request $request)
-	{		 	
-	 	
-	 	DB::insert('INSERT INTO livros (titulo, isbn, idioma, autor, sumario, lancamento) VALUES (?, ?, ?, ?, ?, ?)', [$request->titulo, $request->isbn, $request->idioma, $request->autor, $request->sumario, $request->data]);
+	{	
+
+		$this->validate($request,[
+			'titulo' => 'required|min:5',
+			'isbn' => 'required|numeric',
+			'idioma' => 'required|alpha',
+			'autor' => 'required',
+			'sumario' => 'required|min:5',
+			'data' => 'required|numeric|min:8'
+		]);
+		
+		DB::insert('INSERT INTO livros (titulo, isbn, idioma, autor, sumario, lancamento) VALUES (?, ?, ?, ?, ?, ?)', [$request->titulo, $request->isbn, $request->idioma, $request->autor, $request->sumario, $request->data]);
 
 	 	$idCategorias = $request->input('categorias');
 	 	$numCategoriasSelect = count($idCategorias);
