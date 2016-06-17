@@ -12,8 +12,8 @@ class CategoriasController extends Controller
 		$categorias = DB::select('select * from categorias');
 		$pagename = 'Lista de categorias';
 		return view('pages.categorias', [
-			'categorias'  	=> $categorias,
-			'pagename'	=> $pagename
+			'categorias'	=> $categorias,
+			'pagename'  	=> $pagename
 		]);
 	}
 	public function show($categoria)
@@ -25,13 +25,16 @@ class CategoriasController extends Controller
 	}
 	public function store(Request $request)
 	{	
+	 	$this->Validate($request,[
+	 		'nome' => 'required'
+	 		]);
 	 	//return $request->all();
 	 	DB::insert('INSERT INTO categorias (nome) VALUES (?)', [$request->nome]);
 	 	return back();
 	}
 	public function delete($categoria)
 	{
-		DB::delete('DELETE FROM categorias WHERE id = ?', [$categoria]);
-		return back();
+	 	DB::delete('DELETE FROM categorias WHERE id = ?', [$categoria]);
+	 	return back();
 	}	
 }

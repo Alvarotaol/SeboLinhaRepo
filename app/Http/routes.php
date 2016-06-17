@@ -27,6 +27,8 @@ Route::post('/revisao/{revisao}/avaliar', 'RevisaoController@rate');
 //Rotas dos usuários
 Route::get('usuarios', 'UsuarioController@index');
 Route::get('usuario/{livro}', 'UsuarioController@show');
+Route::get('/editprofile/{id}','UsuarioController@showedit');
+Route::post('/usuario/{id}/update','UsuarioController@update');
 
 //Rotas dos anúncios
 Route::get('anuncio/new', 'AnuncioController@newOne');
@@ -49,5 +51,6 @@ Route::auth();
 //Rotas das denúncias
 Route::get('usuario/{usuario}/denuncia', 'DenunciaController@show');
 Route::post('usuario/{usuario}/denunciar', 'DenunciaController@denunciar');
+Route::get('denuncias', 'DenunciaController@list');
 
 Route::get('/home', 'HomeController@index');

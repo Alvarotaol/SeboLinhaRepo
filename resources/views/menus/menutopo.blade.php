@@ -8,7 +8,7 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="{{ url('/') }}">
-				Sebolinha
+				Sebo Linha
 			</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
@@ -17,6 +17,7 @@
 				<li> <a href="/livros">Livros</a></li>
 				<li><a href="/usuarios">Usuarios</a></li>
 				<li><a href="/categorias">Categorias</a></li>
+				<li><a href="/denuncias">Denúncias</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 					<ul class="dropdown-menu">
@@ -40,6 +41,7 @@
 						</a>
 
 						<ul class="dropdown-menu" role="menu">
+							<li><a href="/editprofile/{{ Auth::user()->id }}"><i class="fa fa-btn fa-sign-out"></i>Alterar suas informações</a></li>
 							<li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Sair</a></li>
 						</ul>
 					</li>

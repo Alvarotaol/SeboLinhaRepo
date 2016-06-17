@@ -17,8 +17,33 @@ class UsuarioController extends Controller
 		$usuarios = DB::select('select * from usuarios');
 		$pagename = 'Lista de usuarios';
 		return view('pages.usuarios', [
-			'usuarios'  	=> $usuarios,
+			'usuarios'	=> $usuarios,
 			'pagename'	=> $pagename
+		]);
+	}
+
+	public function update(Request $request, $id)
+	{
+
+		$this->validate($request,[
+			'nome' => 'required',
+			'email' => 'required',
+			'cpf' => 'required|min:11'
+		]);
+		$request->session()->flash('alert-success', 'Informações atualizadas com sucesso.');
+		DB::insert('
+					UPDATE usuarios
+					SET nome = ?, email = ?, cpf = ?, endereco = ?, cidade = ?, estado = ?
+					WHERE id = ?
+					',[$request->nome, $request->email, $request->cpf, $request->endereco, $request->cidade, $request->estado, $id]);
+		return back();
+	}
+
+	public function showedit($usuarioid)
+	{
+		$usuario = DB::select('select * from usuarios where id = ?', [$usuarioid])[0];
+		return view('pages.edituser', [
+			'usuario'	=> $usuario,
 		]);
 	}
 

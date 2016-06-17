@@ -19,6 +19,22 @@ class DenunciaController extends Controller
 		]);
     }
 
+    public function list()
+    {
+		$denuncias = DB::select('SELECT * FROM
+					(SELECT denuncias.reclamacao, usuarios.nome, denuncias.idDenunciante, denuncias.idDenunciado 
+					FROM denuncias LEFT JOIN usuarios
+					ON denuncias.idDenunciante = usuarios.id) AS a
+					LEFT JOIN
+					(SELECT usuarios.nome AS dnome, usuarios.id
+					FROM usuarios) as b
+					ON a.idDenunciado = b.id
+					');
+		return view('pages.denuncias',[
+			'denuncias'	=> $denuncias
+		]);
+    }
+
     public function denunciar(Request $request, $usuario)
     {	
      	$this->validate($request,[

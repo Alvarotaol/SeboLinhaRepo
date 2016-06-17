@@ -5,7 +5,7 @@
 <h2>Categorias</h2>
 <div class = "row">
 @foreach ($categorias as $categoria)
-<div class="col-sm-3">
+<div class="col-sm-5">
 	<h4><a href="/categorias/{{$categoria->id}}">{{$categoria->nome}}</a>
 	@if(Auth::user())
 	<form action="/categorias/{{$categoria->id}}/delete" method="POST" class="form-horizontal" style="display: inline;">
@@ -27,6 +27,9 @@
 		<div class = "col-sm-3">
 			Nome da Categoria
 			<input type="text" name="nome" id="categoria-name" class="form-control">
+			@if ($errors->has('nome'))
+				<b>A nova categoria precisa de um nome.</b><br>
+			@endif
 			<button type="submit" class="btn btn-primary">Enviar</button>
 		</div>
 	</div>

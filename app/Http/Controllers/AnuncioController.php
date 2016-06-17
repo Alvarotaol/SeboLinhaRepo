@@ -47,9 +47,13 @@ class AnuncioController extends Controller
 
 	public function create(Request $request)
 	{	
-	 	//return Auth::user();
-	 	DB::insert('INSERT INTO anuncios (tipo, preco, data, idLivro, idUsuario) VALUES (?, ?, ?, ?, ?)', [$request->tipo, $request->preco, date('Y/m/d'), $request->livro, Auth::user()->id]);
-	 	return back();
+
+		$this->Validate($request,[
+			'livro' => 'required'
+			]);
+		//return Auth::user();
+		DB::insert('INSERT INTO anuncios (tipo, preco, data, idLivro, idUsuario) VALUES (?, ?, ?, ?, ?)', [$request->tipo, $request->preco, date('Y/m/d'), $request->livro, Auth::user()->id]);
+		return back();
 	}
 
 	public function newOne()

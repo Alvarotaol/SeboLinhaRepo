@@ -7,10 +7,10 @@
 	<div class="col-sm-3">
 		<img src="http://placehold.it/200x300">
 	</div>
-	<div class="col-sm-4">
+	<div class="col-sm-8">
 		<h2><a href="/livro/{{$livro->id}}">{{$livro->titulo}}</a></h2>
 		<div>Por <i>{{$livro->autor}}</i></div>
-		<div style="margin-top: 2em"> {{$livro->sumario}}</div>
+		<div style="margin-top: 2em; text-align: justify; text-justify: inter-word;"> {{$livro->sumario}}</div>
 		<h4>Detalhes sobre este livro</h4>
 		<div><b>Idioma:</b> {{$livro->idioma}}</div>
 		<div><b>ISBN:</b> {{$livro->isbn}}</div>

@@ -26,6 +26,9 @@
 					<option value="{{$livro->id}}">{{$livro->titulo}}</option>
 				@endforeach
 			</select>
+			@if ($errors->has('livro'))
+				<b>Escolha um livro.</b><br>
+			@endif
 
 			<button type="submit" class="btn btn-primary">Enviar</button>
 		</div>
